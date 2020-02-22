@@ -21,7 +21,7 @@ public class Bookings {
     private Date date;
 
     @Column
-    private Time time;
+    private String time;
 
 
 
@@ -36,12 +36,9 @@ public class Bookings {
     public List<ResTable> bookingTables;
 
 
-
-    //constructor
     public Bookings() {
     }
 
-    //getters n setters
     public int getBookingId() {
         return bookingId;
     }
@@ -66,17 +63,13 @@ public class Bookings {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
-
-
-
-
 
     public int getStatus() {
         return status;
@@ -94,18 +87,24 @@ public class Bookings {
         this.price = price;
     }
 
-    //toString
+    public List<ResTable> getBookingTables() {
+        return bookingTables;
+    }
+
+    public void setBookingTables(List<ResTable> bookingTables) {
+        this.bookingTables = bookingTables;
+    }
+
     @Override
     public String toString() {
         return "Bookings{" +
                 "bookingId=" + bookingId +
                 ", paxCount=" + paxCount +
                 ", date=" + date +
-                ", time=" + time +
-
-                ", status='" + status + '\'' +
+                ", time='" + time + '\'' +
+                ", status=" + status +
                 ", price=" + price +
-                ", status='" + status + '\'' +
+                ", bookingTables=" + bookingTables +
                 '}';
     }
 }
