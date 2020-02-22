@@ -10,7 +10,5 @@ public class ImagesService {
     @Autowired
     private ImagesRepository imagesRepository;
 
-    public ImagesService(ImagesRepository imagesRepository){
-        this.imagesRepository = imagesRepository;
-    }
+
 }
