@@ -20,7 +20,7 @@ public class ResTable {
     private double decoPrice;
 
     @OneToMany
-    List<Images> imageList;
+    List<Image> imageList;
 
     @ManyToMany(mappedBy = "bookingTables")
     @JsonIgnore
@@ -32,11 +32,11 @@ public class ResTable {
     //getters and setters for mapping
 
 
-    public List<Images> getImageList() {
+    public List<Image> getImageList() {
         return imageList;
     }
 
-    public void setImageList(List<Images> imageList) {
+    public void setImageList(List<Image> imageList) {
         this.imageList = imageList;
     }
 

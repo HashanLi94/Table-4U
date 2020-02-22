@@ -1,14 +1,15 @@
 package com.springboot.restuarant.Table4U.service;
 
-import com.springboot.restuarant.Table4U.dao.ImagesRepository;
+
+import com.springboot.restuarant.Table4U.dao.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ImagesService {
+public class ImageService {
 
     @Autowired
-    private ImagesRepository imagesRepository;
+    private ImageRepository imageRepository;
 
 
 }
