@@ -1,7 +1,7 @@
 package com.springboot.restuarant.Table4U.controller;
 
-import com.springboot.restuarant.Table4U.dao.BookingRepository;
-import com.springboot.restuarant.Table4U.entity.Bookings;
+
+import com.springboot.restuarant.Table4U.entity.Booking;
 import com.springboot.restuarant.Table4U.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +14,33 @@ public class BookingController {
     private BookingService bookingService;
 
    @GetMapping("/getall")
-   public List<Bookings> findAll(){
+   public List<Booking> findAll(){
        return bookingService.findAll();
    }
 
    @PostMapping("/setall")
-    public Bookings saveAll(@RequestBody Bookings bookings){
-       System.out.println("Booking" +bookings);
-       return bookingService.save(bookings);
+    public Booking saveAll(@RequestBody Booking booking){
+       System.out.println("Booking" + booking);
+       return bookingService.save(booking);
     }
+
+
+    /*
+      Return Available bookings For a Given Date And Time Slot
+     */
+    @GetMapping("/getAvailableBooking")
+    public List<Booking> getAvailableBookings(@RequestParam String sDate,@RequestParam String timeSlot)  {
+
+        try{
+            return bookingService.getAvilableBookings(sDate,timeSlot);
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+
+    }
+
 
 
 }

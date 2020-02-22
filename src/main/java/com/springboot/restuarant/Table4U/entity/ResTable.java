@@ -1,5 +1,7 @@
 package com.springboot.restuarant.Table4U.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +23,8 @@ public class ResTable {
     List<Images> imageList;
 
     @ManyToMany(mappedBy = "bookingTables")
-    List<Bookings> bookingList;
+    @JsonIgnore
+    List<Booking> bookingList;
 
     public ResTable() {
     }
@@ -37,11 +40,11 @@ public class ResTable {
         this.imageList = imageList;
     }
 
-    public List<Bookings> getBookingList() {
+    public List<Booking> getBookingList() {
         return bookingList;
     }
 
-    public void setBookingList(List<Bookings> bookingList) {
+    public void setBookingList(List<Booking> bookingList) {
         this.bookingList = bookingList;
     }
 
