@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class Images {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -14,7 +14,7 @@ public class Images {
     private String image;
 
 
-    public Images() {
+    public Image() {
     }
 
     //getters and setters
@@ -39,7 +39,7 @@ public class Images {
 
     @Override
     public String toString() {
-        return "Images{" +
+        return "Image{" +
                 "imageId=" + imageId +
                 ", image='" + image + '\'' +
                 '}';
