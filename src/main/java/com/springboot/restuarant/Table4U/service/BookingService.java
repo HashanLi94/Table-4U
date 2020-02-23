@@ -35,7 +35,7 @@ public class BookingService {
     }
 
 
-    public List<Booking> getAvailableBookings(String date, String timeSlot) {
+    public List<Booking> getAvailableBookings(String date, String timeSlot) throws Exception{
 
 //        1.get available bookings
         //        2.get reserved tables list
@@ -45,7 +45,7 @@ public class BookingService {
 
     }
 
-    public List<ResTableEntity> getAvailableTables(String date, String timeSlot) {
+    public List<ResTableEntity> getAvailableTables(String date, String timeSlot)  throws Exception {
 
 //        1.get available bookings
         List<Booking> availableBookings = this.getAvailableBookings(date, timeSlot);

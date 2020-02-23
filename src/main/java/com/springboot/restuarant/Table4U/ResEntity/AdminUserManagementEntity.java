@@ -1,46 +1,28 @@
-package com.springboot.restuarant.Table4U.entity;
+package com.springboot.restuarant.Table4U.ResEntity;
+
+import javax.persistence.Column;
+
+public class AdminUserManagementEntity {
 
 
-import javax.persistence.*;
-
-@Entity
-@Table
-public class AdminUserManagement {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private int userId;
-
-    @Column
     private String firstName;
 
-    @Column
+
     private String lastName;
 
-    @Column
+
     private String email;
 
-    @Column
+
     private String password;
 
-    @Column
+
     private boolean isDeleted;
 
-    @Column
+
     private String priviledge;
 
-    public AdminUserManagement() {
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
+    //gettes and setters
     public String getFirstName() {
         return firstName;
     }
@@ -89,16 +71,8 @@ public class AdminUserManagement {
         this.priviledge = priviledge;
     }
 
-    @Override
-    public String toString() {
-        return "AdminUserManagement{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", isDeleted=" + isDeleted +
-                ", priviledge='" + priviledge + '\'' +
-                '}';
+    //constructor
+
+    public AdminUserManagementEntity() {
     }
 }
