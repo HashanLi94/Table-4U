@@ -30,10 +30,13 @@ public class Customer {
     private String contactNumber;
 
     @Column
-    private int nic;
+    private String nic;
 
-    @OneToOne(mappedBy = "customer")
-    private Booking booking;
+    @Column
+    private String additionalNotes;
+
+//    @OneToOne(mappedBy = "customer")
+//    private Booking booking;
 
 //    @OneToOne(mappedBy = "customer")
 //    @JsonIgnore
@@ -90,12 +93,20 @@ public class Customer {
         this.contactNumber = contactNumber;
     }
 
-    public int getNic() {
+    public String getNic() {
         return nic;
     }
 
-    public void setNic(int nic) {
+    public void setNic(String nic) {
         this.nic = nic;
+    }
+
+    public String getAdditionalNotes() {
+        return additionalNotes;
+    }
+
+    public void setAdditionalNotes(String additionalNotes) {
+        this.additionalNotes = additionalNotes;
     }
 
     @Override
@@ -107,17 +118,12 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
-                ", nic=" + nic +
+                ", nic='" + nic + '\'' +
+                ", additionalNotes='" + additionalNotes + '\'' +
                 '}';
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
 }
 
 
