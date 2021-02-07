@@ -1,5 +1,7 @@
 package com.springboot.restuarant.Table4U.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import java.util.List;
 public class Customer {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
 
     @Column
@@ -28,6 +31,13 @@ public class Customer {
 
     @Column
     private int nic;
+
+    @OneToOne(mappedBy = "customer")
+    private Booking booking;
+
+//    @OneToOne(mappedBy = "customer")
+//    @JsonIgnore
+//    private Booking bookingRes;
 
     public Customer() {
     }
@@ -99,6 +109,14 @@ public class Customer {
                 ", contactNumber='" + contactNumber + '\'' +
                 ", nic=" + nic +
                 '}';
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
 

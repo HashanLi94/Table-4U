@@ -34,30 +34,34 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    public Integer setBookingStatusByBookingId(Integer bookingId, Integer status) {
+        return bookingRepository.setBookingStatusByBookingId(bookingId, status);
+    }
 
-    public List<Booking> getAvailableBookings(String date, String timeSlot) throws Exception{
+
+    public List<Booking> getAvailableBookings(int paxCount, String date, String timeSlot) throws Exception{
 
 //        1.get available bookings
         //        2.get reserved tables list
 //        3.get total tables in restaurant
 //        4.return total table - reserved table
-        return bookingRepository.getBookingsByDateNTimeSlot(date, timeSlot);
+        return bookingRepository.getBookingsByDateNTimeSlotNPaxCount(paxCount, date, timeSlot);
 
     }
 
-    public List<ResTableEntity> getAvailableTables(String date, String timeSlot)  throws Exception {
+    public List<ResTableEntity> getAvailableTables(int paxCount , String date, String timeSlot)  throws Exception {
 
 //        1.get available bookings
-        List<Booking> availableBookings = this.getAvailableBookings(date, timeSlot);
+        List<Booking> availableBookings = this.getAvailableBookings(paxCount, date, timeSlot);
         System.out.println(availableBookings);
         //        2.get reserved tables list
         List<ResTable> reservedTableList =  new ArrayList<>();
         List<ResTableEntity> availableTableList = new ArrayList<>();
         List<ResTable> totalTableList = resTableService.getAllTables();
         System.out.println(totalTableList);
-        for (Booking booking : availableBookings) {
-            reservedTableList.addAll(booking.bookingTables);
-        }
+//        for (Booking booking : availableBookings) {
+//            reservedTableList.addAll(booking.bookingTables);
+//        }
 
 
         for (ResTable table : totalTableList) {

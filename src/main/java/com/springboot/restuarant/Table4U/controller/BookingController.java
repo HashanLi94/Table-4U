@@ -22,8 +22,13 @@ public class BookingController {
 
    @PostMapping("/setall")
     public Booking saveAll(@RequestBody Booking booking){
-       System.out.println("Booking" + booking);
        return bookingService.save(booking);
+    }
+
+    //changes status when manager decides to change
+    @PostMapping("/setBookingStatusByBookingId")
+    public Integer setBookingStatusByBookingId(@RequestBody Integer bookingId,@RequestBody Integer status){
+        return bookingService.setBookingStatusByBookingId(bookingId, status);
     }
 
 
@@ -31,10 +36,10 @@ public class BookingController {
       Return Available bookings For a Given Date And Time Slot
      */
     @GetMapping("/getAvailableBooking")
-    public List<Booking> getAvailableBookings(@RequestParam String sDate,@RequestParam String timeSlot)  {
+    public List<Booking> getAvailableBookings(@RequestParam int paxCount, @RequestParam String sDate,@RequestParam String timeSlot)  {
 
         try{
-            return bookingService.getAvailableBookings(sDate,timeSlot);
+            return bookingService.getAvailableBookings(paxCount, sDate,timeSlot);
         }catch (Exception e){
             System.out.println(e);
             return null;
@@ -44,11 +49,11 @@ public class BookingController {
     }
 
     @GetMapping("/getAvailableTables")
-    public List<ResTableEntity> getAvailableTables(@RequestParam String sDate, @RequestParam String timeSlot)  {
+    public List<ResTableEntity> getAvailableTables(@RequestParam int pCount, @RequestParam String sDate, @RequestParam String timeSlot)  {
 
         try{
             System.out.println(sDate);
-            return bookingService.getAvailableTables(sDate,timeSlot);
+            return bookingService.getAvailableTables(pCount, sDate,timeSlot);
         }catch (Exception e){
             System.out.println(e);
             return null;

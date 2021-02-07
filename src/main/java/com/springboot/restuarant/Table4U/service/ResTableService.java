@@ -13,7 +13,13 @@ public class ResTableService {
     private ResTableRepository resTableRepository;
 
     public List<ResTable> getAllTables(){
+
+        System.out.println("Get service");
         return resTableRepository.findAll();
+    }
+
+    public Double getPriceById(Integer tableId){
+        return resTableRepository.getPriceById(tableId);
     }
 
 

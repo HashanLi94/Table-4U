@@ -19,12 +19,34 @@ public class ResTable {
     @Column
     private double decoPrice;
 
+    @Column
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @OneToMany
     List<Image> imageList;
 
-    @ManyToMany(mappedBy = "bookingTables")
-    @JsonIgnore
-    List<Booking> bookingList;
+
+   /* @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "booking_id")
+    //@JsonIgnore
+    private Booking booking;*/
+
+//    example
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "post_id")
+//    private Post post;
+
+//    @ManyToMany(mappedBy = "bookingTables")
+//    @JsonIgnore
+//    List<Booking> bookingList;
 
     public ResTable() {
     }
@@ -40,12 +62,16 @@ public class ResTable {
         this.imageList = imageList;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
-    }
-
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    @Override
+    public String toString() {
+        return "ResTable{" +
+                "tableNumber=" + tableNumber +
+                ", maxCountPax=" + maxCountPax +
+                ", decoPrice=" + decoPrice +
+                ", price=" + price +
+                ", imageList=" + imageList +
+                ", booking=" +
+                '}';
     }
 
     public int getTableNumber() {
@@ -72,12 +98,4 @@ public class ResTable {
         this.decoPrice = decoPrice;
     }
 
-    @Override
-    public String toString() {
-        return "ResTable{" +
-                "tableNumber=" + tableNumber +
-                ", maxCountPax=" + maxCountPax +
-                ", decoPrice=" + decoPrice +
-                '}';
-    }
 }

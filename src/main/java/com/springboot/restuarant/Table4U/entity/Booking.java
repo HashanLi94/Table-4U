@@ -26,19 +26,56 @@ public class Booking {
     private String time;
 
     @Column
-    private int status;
+    private int statusId;
 
     @Column
     private int price;
 
-    @ManyToMany
-    public List<ResTable> bookingTables;
-
-
-
-    //constructor
-    public Booking() {
+    public void setResTableId(int resTableId) {
+        this.resTableId = resTableId;
     }
+
+    public int getResTableId() {
+        return resTableId;
+    }
+
+    @Column
+    private int resTableId;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    public List<ResTable> bookingTables;
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@JsonIgnore
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    /*@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@JsonIgnore
+    @JoinColumn(name = "booking")
+    private Customer customer;*/
+
+  /*  @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    //@JsonIgnore
+    private ResTable resTable;*/
+
+    //    example
+//    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private PostDetails details;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    //constructor
+    public Booking(){}
 
     //getters n setters
     public int getBookingId() {
@@ -52,7 +89,8 @@ public class Booking {
     public int getPaxCount() {
         return paxCount;
     }
-
+    {
+    }
     public void setPaxCount(int paxCount) {
         this.paxCount = paxCount;
     }
@@ -74,15 +112,12 @@ public class Booking {
     }
 
 
-
-
-
-    public int getStatus() {
-        return status;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public int getPrice() {
@@ -102,9 +137,9 @@ public class Booking {
                 ", date=" + date +
                 ", time=" + time +
 
-                ", status='" + status + '\'' +
+                ", statusId='" + statusId + '\'' +
                 ", price=" + price +
-                ", status='" + status + '\'' +
+                ", statusId='" + statusId + '\'' +
                 '}';
     }
 }
